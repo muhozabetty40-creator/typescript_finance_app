@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Finance Pots</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body class="transactions-page">
+    <div class="finance-layout">
+      <aside class="sidebar" aria-label="Primary navigation">
+        <div class="brand">finance</div>
+
+        <nav class="sidebar-nav">
+          <a class="sidebar-link" href="./index.html">Overview</a>
+          <a class="sidebar-link" href="./transactions.html">Transactions</a>
+          <a class="sidebar-link" href="./budgets.html">Budgets</a>
+          <a class="sidebar-link sidebar-link-active" href="./pots.html">Pots</a>
+          <a class="sidebar-link" href="./recurring-bills.html">Recurring bills</a>
+        </nav>
+
+        <button class="sidebar-minimize" type="button">Minimize Menu</button>
+      </aside>
+
+      <main class="transactions-main">
+        <header class="transactions-header">
+          <h1>Pots</h1>
+          <button id="openPotFormButton" class="add-transaction-btn" type="button">+Add New Pot</button>
+        </header>
+
+        <section class="transactions-panel pots-panel" aria-label="Pots dashboard">
+          <p class="budget-empty-state" id="potsEmptyState">You don't have a pot account yet.</p>
+
+          <div id="potModal" class="transaction-modal pot-modal hidden" aria-hidden="true">
+            <form id="potForm" class="add-transaction-form transaction-modal-form pot-modal-form" novalidate>
+              <div class="transaction-modal-head">
+                <h2>Add New Pot</h2>
+                <button id="closePotFormButton" class="transaction-modal-close" type="button" aria-label="Close">
+                  &times;
+                </button>
+              </div>
+
+              <p class="budget-modal-copy">
+                Create a savings pot to set a target amount and track your progress.
+              </p>
+
+              <div class="form-grid pot-modal-grid">
+                <div>
+                  <label for="potName">Pot Name</label>
+                  <input id="potName" name="potName" type="text" maxlength="40" required placeholder="e.g. Rainy Days" />
+                </div>
+                <div>
+                  <label for="potTarget">Target Amount</label>
+                  <input id="potTarget" name="potTarget" type="number" min="1" step="0.01" required placeholder="$ e.g. 2000" />
+                </div>
+                <div>
+                  <label for="potTheme">Theme</label>
+                  <select id="potTheme" name="potTheme">
+                    <option value="green">Green</option>
+                    <option value="teal">Teal</option>
+                    <option value="blue">Blue</option>
+                    <option value="navy">Navy</option>
+                    <option value="cyan">Cyan</option>
+                    <option value="mint">Mint</option>
+                    <option value="lime">Lime</option>
+                    <option value="yellow">Yellow</option>
+                    <option value="amber">Amber</option>
+                    <option value="orange">Orange</option>
+                    <option value="coral">Coral</option>
+                    <option value="red">Red</option>
+                    <option value="rose">Rose</option>
+                    <option value="pink">Pink</option>
+                    <option value="magenta">Magenta</option>
+                    <option value="purple">Purple</option>
+                    <option value="violet">Violet</option>
+                    <option value="indigo">Indigo</option>
+                    <option value="brown">Brown</option>
+                    <option value="slate">Slate</option>
+                    <option value="gray">Gray</option>
+                    <option value="black">Black</option>
+                  </select>
+                </div>
+                <input id="potSaved" name="potSaved" type="number" min="0" step="0.01" value="0" hidden />
+              </div>
+
+              <div class="form-actions pot-modal-actions">
+                <button class="primary-btn" type="submit">Submit</button>
+              </div>
+              <p id="potFeedback" role="status" aria-live="polite"></p>
+            </form>
+          </div>
+
+          <div id="potCards" class="budget-cards"></div>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="./dist/pots.js"></script>
+  </body>
+</html>

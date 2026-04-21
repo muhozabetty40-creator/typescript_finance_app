@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Finance Auth</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body class="auth-page">
+    <main class="auth-shell">
+      <section class="auth-hero" aria-label="Finance introduction">
+        <div class="auth-brand">finance</div>
+        <img
+          class="auth-illustration"
+          src="./assets/image.png"
+          alt="Illustration of a person managing money"
+        />
+        <div class="auth-copy">
+          <h1>Keep track of your money and save for your future</h1>
+          <p>
+            Personal finance app puts you in control of your spending. Track transactions,
+            set budgets, and add to savings pots easily.
+          </p>
+        </div>
+      </section>
+
+      <section class="auth-panel" aria-label="Authentication form">
+        <h2 id="authTitle" class="auth-title">Login</h2>
+
+        <form id="authForm" class="auth-form" novalidate>
+          <div id="nameFieldWrap" class="auth-field hidden">
+            <label for="nameField">Name</label>
+            <input id="nameField" name="name" type="text" placeholder="Name" autocomplete="name" />
+          </div>
+
+          <div class="auth-field">
+            <label for="emailField">Email</label>
+            <input id="emailField" name="email" type="email" placeholder="Email" autocomplete="email" required />
+          </div>
+
+          <div class="auth-field">
+            <label for="passwordField">Password</label>
+            <div class="password-field">
+              <input
+                id="passwordField"
+                name="password"
+                type="password"
+                placeholder="Password"
+                autocomplete="current-password"
+                required
+              />
+              <button id="passwordToggleButton" class="password-toggle" type="button" aria-label="Show password">
+                ⦿
+              </button>
+            </div>
+            <p id="passwordHint" class="auth-hint hidden">Passwords must be at least 8 characters</p>
+          </div>
+
+          <p id="authFeedback" class="auth-feedback" role="status" aria-live="polite"></p>
+
+          <button id="submitButton" class="auth-submit" type="submit">Login</button>
+        </form>
+
+        <p id="switchPrompt" class="auth-switch">
+          <span id="switchModeText">Need to create an account?</span>
+          <button id="switchModeButton" type="button">Sign Up</button>
+        </p>
+      </section>
+    </main>
+
+    <script type="module" src="./dist/auth.js"></script>
+  </body>
+</html>

@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recurring Bills</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body class="transactions-page">
+    <div class="finance-layout">
+      <aside class="sidebar" aria-label="Primary navigation">
+        <div class="brand">finance</div>
+
+        <nav class="sidebar-nav">
+          <a class="sidebar-link" href="./index.html">Overview</a>
+          <a class="sidebar-link" href="./transactions.html">Transactions</a>
+          <a class="sidebar-link" href="./budgets.html">Budgets</a>
+          <a class="sidebar-link" href="./pots.html">Pots</a>
+          <a class="sidebar-link sidebar-link-active" href="./recurring-bills.html">Recurring bills</a>
+        </nav>
+
+        <button class="sidebar-minimize" type="button">Minimize Menu</button>
+      </aside>
+
+      <main class="transactions-main">
+        <header class="transactions-header">
+          <h1>Recurring Bills</h1>
+          <button id="openBillFormButton" class="add-transaction-btn" type="button">+Add New Bill</button>
+        </header>
+
+        <section class="recurring-layout" aria-label="Recurring bills dashboard">
+          <section class="recurring-summary-column">
+            <article class="recurring-total-card">
+              <p>Total bills</p>
+              <h2 id="totalBillsAmount">$0.00</h2>
+            </article>
+
+            <article class="recurring-summary-card">
+              <h3>Summary</h3>
+              <div class="recurring-summary-row">
+                <span>Paid bills</span>
+                <strong id="paidBillsAmount">$0.00</strong>
+              </div>
+              <div class="recurring-summary-row">
+                <span>Total Upcoming</span>
+                <strong id="upcomingBillsAmount">$0.00</strong>
+              </div>
+              <div class="recurring-summary-row recurring-summary-row-alert">
+                <span>Due Soon</span>
+                <strong id="dueSoonBillsAmount">$0.00</strong>
+              </div>
+            </article>
+          </section>
+
+          <section class="transactions-panel recurring-panel" aria-label="Recurring bill controls and table">
+            <form id="billForm" class="add-transaction-form hidden" novalidate>
+              <div class="form-grid recurring-form-grid">
+                <div>
+                  <label for="billTitle">Bill Title</label>
+                  <input id="billTitle" name="billTitle" type="text" maxlength="60" required />
+                </div>
+                <div>
+                  <label for="billAmount">Amount</label>
+                  <input id="billAmount" name="billAmount" type="number" min="0.01" step="0.01" required />
+                </div>
+                <div>
+                  <label for="billDueDate">Due Date</label>
+                  <input id="billDueDate" name="billDueDate" type="date" required />
+                </div>
+                <div>
+                  <label for="billCategory">Category</label>
+                  <select id="billCategory" name="billCategory">
+                    <option value="bills">Bills</option>
+                    <option value="food">Food</option>
+                    <option value="transport">Transport</option>
+                    <option value="shopping">Shopping</option>
+                    <option value="health">Health</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="billStatus">Status</label>
+                  <select id="billStatus" name="billStatus">
+                    <option value="upcoming">Upcoming</option>
+                    <option value="paid">Paid</option>
+                    <option value="due-soon">Due Soon</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-actions">
+                <button id="cancelBillFormButton" class="secondary-btn" type="button">Cancel</button>
+                <button class="primary-btn" type="submit">Save Bill</button>
+              </div>
+              <p id="billFeedback" role="status" aria-live="polite"></p>
+            </form>
+
+            <div class="controls-row recurring-controls-row">
+              <input
+                id="billSearchText"
+                class="search-input"
+                type="search"
+                placeholder="Search bills"
+                aria-label="Search bills"
+              />
+
+              <div class="select-controls">
+                <label for="billSortBy">Sort by</label>
+                <select id="billSortBy" aria-label="Sort bills">
+                  <option value="latest">Latest</option>
+                  <option value="oldest">Oldest</option>
+                  <option value="highest">Highest</option>
+                  <option value="lowest">Lowest</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="table-wrap table-wrap-plain">
+              <table class="transactions-table recurring-table">
+                <thead>
+                  <tr>
+                    <th>Bill Title</th>
+                    <th>Due Date</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="billBody"></tbody>
+              </table>
+            </div>
+
+            <div class="pagination-row">
+              <button id="prevBillPageButton" class="pager-btn" type="button">Prev</button>
+              <p id="billPageInfo" class="page-info">Page 1 of 1</p>
+              <button id="nextBillPageButton" class="pager-btn" type="button">Next</button>
+            </div>
+
+            <template id="billEmptyStateTemplate">
+              <tr>
+                <td colspan="4" class="empty-state">No results.</td>
+              </tr>
+            </template>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="./dist/recurring-bills.js"></script>
+  </body>
+</html>

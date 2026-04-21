@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Finance Budgets</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body class="transactions-page">
+    <div class="finance-layout">
+      <aside class="sidebar" aria-label="Primary navigation">
+        <div class="brand">finance</div>
+
+        <nav class="sidebar-nav">
+          <a class="sidebar-link" href="./index.html">Overview</a>
+          <a class="sidebar-link" href="./transactions.html">Transactions</a>
+          <a class="sidebar-link sidebar-link-active" href="./budgets.html">Budgets</a>
+          <a class="sidebar-link" href="./pots.html">Pots</a>
+          <a class="sidebar-link" href="./recurring-bills.html">Recurring bills</a>
+        </nav>
+
+        <button class="sidebar-minimize" type="button">Minimize Menu</button>
+      </aside>
+
+      <main class="transactions-main">
+        <header class="transactions-header">
+          <h1>Budgets</h1>
+          <button id="openBudgetFormButton" class="add-transaction-btn" type="button">+Add New Budget</button>
+        </header>
+
+        <section class="transactions-panel" aria-label="Budgets dashboard">
+          <p class="budget-empty-state">You haven't created a budget yet.</p>
+
+          <div id="budgetModal" class="transaction-modal budget-modal hidden" aria-hidden="true">
+            <form id="budgetForm" class="add-transaction-form transaction-modal-form budget-modal-form" novalidate>
+              <div class="transaction-modal-head">
+                <h2>Add New Budget</h2>
+                <button id="closeBudgetFormButton" class="transaction-modal-close" type="button" aria-label="Close">
+                  &times;
+                </button>
+              </div>
+
+              <p class="budget-modal-copy">
+                Choose a category to set a spending budget. These categories can help you monitor spending.
+              </p>
+
+              <div class="form-grid budget-modal-grid">
+                <div>
+                  <label for="budgetCategory">Category</label>
+                  <select id="budgetCategory" name="budgetCategory">
+                    <option value="salary">Salary</option>
+                    <option value="freelance">Freelance</option>
+                    <option value="food">Food</option>
+                    <option value="transport">Transport</option>
+                    <option value="bills">Bills</option>
+                    <option value="shopping">Shopping</option>
+                    <option value="health">Health</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="budgetLimit">Maximum Spend</label>
+                  <input id="budgetLimit" name="budgetLimit" type="number" min="1" step="0.01" required placeholder="e.g. $2000" />
+                </div>
+                <div>
+                  <label for="budgetTheme">Theme</label>
+                  <select id="budgetTheme" name="budgetTheme">
+                    <option value="green">Green</option>
+                    <option value="teal">Teal</option>
+                    <option value="blue">Blue</option>
+                    <option value="navy">Navy</option>
+                    <option value="cyan">Cyan</option>
+                    <option value="mint">Mint</option>
+                    <option value="lime">Lime</option>
+                    <option value="yellow">Yellow</option>
+                    <option value="amber">Amber</option>
+                    <option value="orange">Orange</option>
+                    <option value="coral">Coral</option>
+                    <option value="red">Red</option>
+                    <option value="rose">Rose</option>
+                    <option value="pink">Pink</option>
+                    <option value="magenta">Magenta</option>
+                    <option value="purple">Purple</option>
+                    <option value="violet">Violet</option>
+                    <option value="indigo">Indigo</option>
+                    <option value="brown">Brown</option>
+                    <option value="slate">Slate</option>
+                    <option value="gray">Gray</option>
+                    <option value="black">Black</option>
+                  </select>
+                </div>
+                <input id="budgetMonth" name="budgetMonth" type="month" required hidden />
+              </div>
+
+              <div class="form-actions budget-modal-actions">
+                <button class="primary-btn" type="submit">Submit</button>
+              </div>
+              <p id="budgetFeedback" role="status" aria-live="polite"></p>
+            </form>
+          </div>
+
+          <div id="budgetCards" class="budget-cards"></div>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="./dist/budgets.js"></script>
+  </body>
+</html>

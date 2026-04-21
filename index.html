@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Finance Overview</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet" 
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="bg-shape bg-shape-a"></div>
+    <div class="bg-shape bg-shape-b"></div>
+
+    <div class="finance-layout overview-layout">
+      <aside class="sidebar" aria-label="Primary navigation">
+        <div class="brand">finance</div>
+
+        <nav class="sidebar-nav">
+          <a class="sidebar-link sidebar-link-active" href="./index.html">Overview</a>
+          <a class="sidebar-link" href="./transactions.html">Transactions</a>
+          <a class="sidebar-link" href="./budgets.html">Budgets</a>
+          <a class="sidebar-link" href="./pots.html">Pots</a>
+          <a class="sidebar-link" href="./recurring-bills.html">Recurring bills</a>
+        </nav>
+
+        <button class="sidebar-minimize" type="button">Minimize Menu</button>
+      </aside>
+
+      <main class="overview-main">
+        <header class="overview-header">
+          <h1>Overview</h1>
+          <button id="logoutButton" class="logout-btn" type="button">Logout</button>
+        </header>
+
+        <section class="overview-metrics" aria-label="Summary cards">
+          <article class="overview-metric-card overview-metric-card-primary">
+            <p>Current Balance</p>
+            <h2 id="overviewBalance">$0.00</h2>
+          </article>
+          <article class="overview-metric-card">
+            <p>Income</p>
+            <h2 id="overviewIncome">$0.00</h2>
+          </article>
+          <article class="overview-metric-card">
+            <p>Expenses</p>
+            <h2 id="overviewExpense">$0.00</h2>
+          </article>
+        </section>
+
+        <section class="overview-grid-surface" aria-label="Dashboard details">
+          <section class="dashboard-card dashboard-card-pots">
+            <div class="dashboard-card-head">
+              <h3>Pots</h3>
+              <a href="./pots.html">See Details <span aria-hidden="true">▶</span></a>
+            </div>
+            <div class="pot-preview-card">
+              <div class="pot-preview-icon" aria-hidden="true">$</div>
+              <div>
+                <p>Pots</p>
+                <strong id="potsTotal">$0</strong>
+              </div>
+            </div>
+          </section>
+
+          <section class="dashboard-card dashboard-card-budgets">
+            <div class="dashboard-card-head">
+              <h3>Budgets</h3>
+              <a href="./budgets.html">See Details <span aria-hidden="true">▶</span></a>
+            </div>
+            <p id="budgetsEmptyState" class="dashboard-empty-copy">No Data Provided.</p>
+            <div id="budgetsPreview" class="dashboard-preview-list"></div>
+          </section>
+
+          <section class="dashboard-card dashboard-card-transactions">
+            <div class="dashboard-card-head">
+              <h3>Transactions</h3>
+              <a href="./transactions.html">See Details <span aria-hidden="true">▶</span></a>
+            </div>
+            <p id="overviewCountLabel" class="dashboard-empty-copy">No Data Provided</p>
+            <ul id="recentTransactionList" class="dashboard-preview-list dashboard-list"></ul>
+          </section>
+
+          <section class="dashboard-card dashboard-card-recurring">
+            <div class="dashboard-card-head">
+              <h3>Recurring Bills</h3>
+              <a href="./recurring-bills.html">See Details <span aria-hidden="true">▶</span></a>
+            </div>
+            <div class="recurring-mini-list">
+              <div class="recurring-mini-row recurring-mini-row-paid">
+                <span>Paid Bills</span>
+                <strong id="paidBillsAmount">$0.00</strong>
+              </div>
+              <div class="recurring-mini-row recurring-mini-row-upcoming">
+                <span>Total Upcoming</span>
+                <strong id="upcomingBillsAmount">$0.00</strong>
+              </div>
+              <div class="recurring-mini-row recurring-mini-row-soon">
+                <span>Due Soon</span>
+                <strong id="dueSoonBillsAmount">$0.00</strong>
+              </div>
+            </div>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="./dist/overview.js"></script>
+  </body>
+</html>
